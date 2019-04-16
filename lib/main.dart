@@ -1,30 +1,21 @@
 import 'package:flutter/material.dart';
-import 'package:speech_recognition/speech_recognition.dart';
+import 'package:speech/pages/index.dart';
 void main() {
-  runApp(
-  new MaterialApp(
-   home: new Scaffold(
-     appBar: new AppBar(
-       title: new Text("Test")
-     ),
-     body: new Container(
-       child: new Column(
-         children: <Widget>[
-           new Text("Hola"),
-           new RaisedButton(
-             onPressed: () => listen(),
-             child: new Text("Activar"),
-
-           )
-         ],
-       )
-     ),
-   ),
+  runApp(new MaterialApp(
+   home: MyApp(),
   ));
 }
 
-void listen(){
-  SpeechRecognition _speech = new SpeechRecognition();
-  _speech.setRecognitionStartedHandler(()=>true);
-  _speech.listen(locale: "es_CL").then((r) => print(r));
+class MyApp extends StatefulWidget {
+  @override
+  _MyAppState createState() => new _MyAppState();
+ }
+class _MyAppState extends State<MyApp> {
+  @override
+  Widget build(BuildContext context) {
+   return new Scaffold(
+     appBar: new AppBar(title: new Text("Speech Recognition"),),
+     body: new Index(),  
+   );
+  }
 }
